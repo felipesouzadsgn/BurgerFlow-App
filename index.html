@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>BurgerFlow Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              primary: '#FF4E1F', // Orange Red
+              secondary: '#FFC857', // Mustard Yellow
+              accent: '#1F2933', // Dark Graphite
+              // Semantic Colors mapped to CSS Variables
+              background: 'var(--bg-main)',
+              surface: 'var(--bg-surface)',
+              border: 'var(--border-color)',
+              text: {
+                main: 'var(--text-main)',
+                muted: 'var(--text-muted)',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Hide scrollbar */
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      
+      body {
+        -webkit-tap-highlight-color: transparent;
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* THEME VARIABLES */
+      :root {
+        /* Default Dark Mode */
+        --bg-main: #050607;
+        --bg-surface: #111317;
+        --border-color: #252935;
+        --text-main: #F9FAFB;
+        --text-muted: #A4A9B5;
+      }
+
+      /* Light Mode Overrides */
+      .light {
+        --bg-main: #F3F4F6;      /* Gray 100 */
+        --bg-surface: #FFFFFF;   /* White */
+        --border-color: #E5E7EB; /* Gray 200 */
+        --text-main: #111827;    /* Gray 900 */
+        --text-muted: #6B7280;   /* Gray 500 */
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
