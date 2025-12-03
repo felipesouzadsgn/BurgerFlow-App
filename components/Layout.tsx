@@ -5,9 +5,10 @@ import { STORE_INFO } from '../constants';
 interface LayoutProps {
   children: ReactNode;
   onOpenAbout: () => void;
+  onBackToHome?: () => void;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children, onOpenAbout }) => {
+export const Layout: React.FC<LayoutProps> = ({ children, onOpenAbout, onBackToHome }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
@@ -42,7 +43,10 @@ export const Layout: React.FC<LayoutProps> = ({ children, onOpenAbout }) => {
         {/* Top Bar */}
         <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border h-16 flex items-center justify-between px-4 transition-all duration-300">
           <div className="flex flex-col">
-            <div className="flex items-center gap-2">
+            <div 
+              className={`flex items-center gap-2 ${onBackToHome ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
+              onClick={onBackToHome}
+            >
               <div className="bg-primary/10 p-1.5 rounded-lg text-primary">
                 {/* Burger Logo Icon */}
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

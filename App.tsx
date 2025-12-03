@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layout } from './components/Layout';
 import { Hero } from './components/Hero';
 import { CategoryNav } from './components/CategoryNav';
@@ -6,11 +6,17 @@ import { ProductCard } from './components/ProductCard';
 import { ProductModal } from './components/ProductModal';
 import { CartModal } from './components/CartModal';
 import { AboutModal } from './components/AboutModal';
+import { LandingPage } from './components/LandingPage';
 import { CATEGORIES, GET_PRODUCTS_BY_CATEGORY } from './constants';
 import { Product, CartItem } from './types';
 import { ShoppingBag } from 'lucide-react';
 
+type ViewState = 'LANDING' | 'MENU';
+
 function App() {
+  const [currentView, setCurrentView] = useState<ViewState>('LANDING');
+  
+  // Menu States
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0].id);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
@@ -41,8 +47,17 @@ function App() {
     return acc + (price * item.quantity);
   }, 0);
 
+  // If showing Landing Page
+  if (currentView === 'LANDING') {
+    return <LandingPage onGoToMenu={() => setCurrentView('MENU')} />;
+  }
+
+  // If showing Menu
   return (
-    <Layout onOpenAbout={() => setIsAboutOpen(true)}>
+    <Layout 
+      onOpenAbout={() => setIsAboutOpen(true)}
+      onBackToHome={() => setCurrentView('LANDING')}
+    >
       <div className="pt-4">
         <Hero />
       </div>
